@@ -302,6 +302,7 @@ module.exports = function (webpackEnv) {
       ],
     },
     resolve: {
+      fallback: { "url": false ,"zlib": false,"https": false,"http": false },
       // This allows you to set a fallback for where webpack should look for modules.
       // We placed these paths second because we want `node_modules` to "win"
       // if there are any conflicts. This matches Node resolution mechanism.
@@ -596,30 +597,31 @@ module.exports = function (webpackEnv) {
             : undefined
         )
       ),
-              // cesium配置
-              new CopyWebpackPlugin([
-                {
-                  from: path.join(cesiumSource, cesiumWorkers),
-                  to: "Workers",
-                },
-                {
-                  from: path.join(cesiumSource, "Assets"),
-                  to: "Assets",
-                },
-                {
-                  from: path.join(cesiumSource, "Widgets"),
-                  to: "Widgets",
-                },
-                {
-                  // cesiuim环境变量
-                  from: path.join(fileFolder, "static"),
-                  to: "static",
-                },
-              ]),
-        
-              new webpack.DefinePlugin({
-                CESIUM_BASE_URL: JSON.stringify(""),
-              }),
+      // cesium配置
+      new CopyWebpackPlugin([
+        {
+          from: path.join(cesiumSource, cesiumWorkers),
+          to: "Workers",
+        },
+        { from:path.join(cesiumSource, "ThirdParty"), to: 'ThirdParty' },
+        {
+          from: path.join(cesiumSource, "Assets"),
+          to: "Assets",
+        },
+        {
+          from: path.join(cesiumSource, "Widgets"),
+          to: "Widgets",
+        },
+        {
+          // cesiuim环境变量
+          from: path.join(fileFolder, "static"),
+          to: "static",
+        },
+      ]),
+
+      new webpack.DefinePlugin({
+        CESIUM_BASE_URL: JSON.stringify(""),
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358

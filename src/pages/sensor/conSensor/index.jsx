@@ -59,7 +59,8 @@ class Consensor extends React.PureComponent {
         heading: Cesium.Math.toRadians(78.17580384898336),
         pitch: Cesium.Math.toRadians(-29.981992162453782),
         roll: Cesium.Math.toRadians(0.005676460617140785)
-      }
+      },
+      duration: 3.5
     })
   }
   initPhaseControl =()=> {

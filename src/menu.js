@@ -25,6 +25,20 @@ const sidebarMenu = [
     ],
   },
   {
+    key: 'sensor',
+    name: '传感器',
+    child: [
+      {
+        key: 'coneSensor',
+        name: '锥形传感器',
+      },
+      {
+        key: 'semicircleSensor',
+        name:"半圆传感器"
+      }
+    ],
+  },
+  {
     key: 'fanShapeScan',
     name: '扇形扫描',
     icon: 'icon-fan',

@@ -20,7 +20,8 @@ import AniSoldier from './pages/modelExample/threeCesium/ani-soldier/index.jsx'
 import RayCast from './pages/modelExample/threeCesium/rayCast/index.jsx'
 import LinkPointFlow from './pages/material/linkPointFlow/index.jsx'
 import FanShapeScan from './pages/fanShapeScan/index.jsx'
-
+import ConSensor from './pages/sensor/conSensor/index.jsx'
+import SemicircleSensor from './pages/sensor/semicircleSensor/index.jsx';
 
 const hashHistory = createHashHistory();
 
@@ -45,6 +46,10 @@ const routes = (
               <Route path="aniSoldier" element={<AniSoldier/>}/>
               <Route path="rayCast" element={<RayCast/>}/>
             </Route>
+          </Route>
+          <Route path="sensor" >
+            <Route path="coneSensor"  element={<ConSensor />} />
+            <Route path="semicircleSensor"   element={<SemicircleSensor />} />
           </Route>
           <Route path="*" element={<Error/>}/>
        </Route>
