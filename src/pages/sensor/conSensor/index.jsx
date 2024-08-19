@@ -86,33 +86,46 @@ class Consensor extends React.PureComponent {
       }
     )
   }
-  xHalfAngleChange (e) {
-    this.sensorEntity.angle = e.target.value
-  }
   yHalfAngleChange (e) {
+    this.setState(
+      () => ({
+        yHalfAngleDef: {...this.state.yHalfAngleDef,value:e.target.value},
+      }));
     this.sensorEntity.radius = e.target.value
   }
   HeadingChange (e) {
-    this.setState({heading: e.target.value});
+    this.setState(
+      () => ({
+        HeadingDef: { ...this.state.HeadingDef, value: e.target.value },
+        heading:e.target.value
+      }));
     this.sensorEntity._rotation.heading = Cesium.Math.toRadians(
-      this.state.heading
+      e.target.value
     )
   }
   PitchChange (e) {
-    this.setState({pitch: e.target.value});
-    this.sensorEntity._rotation.pitch = Cesium.Math.toRadians(this.state.pitch)
+    this.setState(
+      () => ({
+        PitchDef: { ...this.state.PitchDef, value: e.target.value },
+        pitch:e.target.value
+      }));
+    this.sensorEntity._rotation.pitch = Cesium.Math.toRadians(e.target.value)
   }
   RollChange (e) {
-    this.setState({roll: e.target.value});
-    this.sensorEntity._rotation.roll = Cesium.Math.toRadians(this.state.roll)
+    this.setState(
+      () => ({
+        RollDef: { ...this.state.RollDef, value: e.target.value },
+        roll:e.target.value
+      }));
+    this.sensorEntity._rotation.roll = Cesium.Math.toRadians(e.target.value)
   }
   componentDidMount() {
     this.initMap();
   }
 
   componentWillUnmount() {
-    // this.c_viewer = null
-    // this.customCesiumPlugin = null
+    this.c_viewer = null
+    this.customCesiumPlugin = null
   }
   render() {
     return (
@@ -126,7 +139,7 @@ class Consensor extends React.PureComponent {
                value={this.state.yHalfAngleDef.value}
                max={this.state.yHalfAngleDef.max}
                min={this.state.yHalfAngleDef.min}
-               onChange={this.yHalfAngleChange} />
+               onChange={this.yHalfAngleChange.bind(this)} />
       </div>
       <div className="slider-demo-block">
         <span className="demonstration">Heading:</span>
@@ -134,7 +147,7 @@ class Consensor extends React.PureComponent {
                value={this.state.HeadingDef.value}
                max={this.state.HeadingDef.max}
                min={this.state.HeadingDef.min}
-               onChange={this.state.HeadingChange} />
+               onChange={this.HeadingChange.bind(this)} />
       </div>
       <div className="slider-demo-block">
         <span className="demonstration">Pitch:</span>
@@ -142,7 +155,7 @@ class Consensor extends React.PureComponent {
                 value={this.state.PitchDef.value}
                 max={this.state.PitchDef.max}
                 min={this.state.PitchDef.min}
-                onChange={this.PitchChange } />
+                onChange={this.PitchChange.bind(this) } />
       </div>
       <div className="slider-demo-block">
         <span className="demonstration">Roll:</span>
@@ -150,7 +163,7 @@ class Consensor extends React.PureComponent {
               value={this.state.RollDef.value}
                max={this.state.RollDef.max}
                min={this.state.RollDef.min}
-               onChange={this.RollChange} />
+               onChange={this.RollChange.bind(this)} />
       </div>
     </section>
   </div>

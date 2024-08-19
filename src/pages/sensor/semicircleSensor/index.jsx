@@ -160,8 +160,8 @@ class SemicircleSensor extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    // this.c_viewer = null
-    // this.customCesiumPlugin = null
+    this.c_viewer = null
+    this.customCesiumPlugin = null
   }
   render() {
     return (

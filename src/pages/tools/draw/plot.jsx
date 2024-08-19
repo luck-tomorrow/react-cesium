@@ -93,6 +93,22 @@ class DrawFeatureLayer extends PureComponent {
         rOuter: 25,
         rInner: 50,
       });
+    } else if (drawingMode === 'drawWallGraphics') {
+      this.draw.drawWallGraphics({
+        style: {
+          material: Cesium.Color.GOLD.withAlpha(0.5),
+          maximumHeights: [600, 600],
+          minimumHeights: [0, 0],
+        }
+      })
+    } else if (drawingMode === 'drawPolylineVolumeGraphics') {
+      this.draw.drawPolylineVolumeGraphics({
+        color: Cesium.Color.fromCssColorString("#FFD700"),
+        shape: 'fivePoint',
+        arms: 5,
+        rOuter: 25,
+        rInner: 50
+      })
     }
   }
 
@@ -138,12 +154,15 @@ class DrawFeatureLayer extends PureComponent {
            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
          }
        >
-         <Option value="cylinder">Draw Cylinder</Option>
-         <Option value="line">Draw Line</Option>
-         <Option value="polygon">Draw Polygon</Option>
-         <Option value="circle">Draw Circle</Option>
-         <Option value="rectangle">Draw Rectangle</Option>
-         <Option value="polylineVolume">Draw PolylineVolume</Option>
+         <Option value="cylinder">圆柱体</Option>
+         <Option value="line">线</Option>
+         <Option value="polygon">多边形面</Option>
+         <Option value="circle">圆</Option>
+         <Option value="rectangle">矩形</Option>
+         <Option value="polylineVolume">管道</Option>
+          <Option value="drawWallGraphics">围栏</Option>
+          <Option value="drawPolylineVolumeGraphics">五角管道</Option>
+          
        </Select>
      </div>
     );

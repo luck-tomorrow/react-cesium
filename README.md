@@ -24,12 +24,13 @@ npm i
 如果 npm 安装过慢建议使用淘宝镜像
 
 ```
+# 查看当前npm 镜像
 npm config get registry
 
 # 设置为淘宝镜像
 npm config set registry https://registry.npmmirror.com
 
-# 设置为官方镜像
+# 切换为官方镜像
 npm config set registry https://registry.npmjs.org
 ```
 

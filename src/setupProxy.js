@@ -1,5 +1,5 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const originUrl ='http://10.28.206.99:9527/reactCesium'
+const originUrl ='http://192.168.1.64:9527/reactCesium'
 /**
  * 路由代理
  * 注意是从长路由到短路由
